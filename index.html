@@ -1,1 +1,133 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+    <script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
+
+    <script type="text/javascript" type="text/javascript">
+        var rbt_id = window.prompt("Robot ID");
+
+        var ros = new ROSLIB.Ros({
+            url: 'omaha.grainweevil.com://localhost:9090'
+        });
+
+        ros.on('connection', function () {
+            document.getElementById("status").innerHTML = "Connected";
+        });
+
+        ros.on('error', function (error) {
+            document.getElementById("status").innerHTML = "Error";
+        });
+
+        ros.on('close', function () {
+            document.getElementById("status").innerHTML = "Closed";
+        });
+
+        var ang_accel_listener = new ROSLIB.Topic({
+            ros: ros,
+            name: '/robot_' + rbt_id + '/ang_accel',
+            messageType: 'geometry_msgs/Vector3'
+        });
+        ang_accel_listener.subscribe(function (m) {
+            document.getElementById("ang_accel").innerHTML = m.data;
+        });
+
+        var lin_accel_listener = new ROSLIB.Topic({
+            ros: ros,
+            name: '/robot_' + rbt_id + '/lin_accel',
+            messageType: 'geometry_msgs/Vector3'
+        });
+        ang_accel_listener.subscribe(function (m) {
+            document.getElementById("lin_accel").innerHTML = m.data;
+        });
+
+        var magnetometer = new ROSLIB.Topic({
+            ros: ros,
+            name: '/robot_' + rbt_id + '/magnetometer',
+            messageType: 'geometry_msgs/Vector3'
+        });
+        ang_accel_listener.subscribe(function (m) {
+            document.getElementById("magnetometer").innerHTML = m.data;
+        });
+
+        var mosfet_temp = new ROSLIB.Topic({
+            ros: ros,
+            name: '/robot_' + rbt_id + '/mosfet_temp',
+            messageType: 'geometry_msgs/Vector3'
+        });
+        ang_accel_listener.subscribe(function (m) {
+            document.getElementById("mosfet_temp").innerHTML = m.data;
+        });
+
+        var motor_current = new ROSLIB.Topic({
+            ros: ros,
+            name: '/robot_' + rbt_id + '/motor_current',
+            messageType: 'geometry_msgs/Vector3'
+        });
+        ang_accel_listener.subscribe(function (m) {
+            document.getElementById("motor_current").innerHTML = m.data;
+        });
+
+        var motor_temp = new ROSLIB.Topic({
+            ros: ros,
+            name: '/robot_' + rbt_id + '/motor_temp',
+            messageType: 'geometry_msgs/Vector3'
+        });
+        ang_accel_listener.subscribe(function (m) {
+            document.getElementById("motor_temp").innerHTML = m.data;
+        });
+
+        var motor_voltage = new ROSLIB.Topic({
+            ros: ros,
+            name: '/robot_' + rbt_id + '/motor_voltage',
+            messageType: 'geometry_msgs/Vector3'
+        });
+        ang_accel_listener.subscribe(function (m) {
+            document.getElementById("motor_voltage").innerHTML = m.data;
+        });
+
+        var orientation = new ROSLIB.Topic({
+            ros: ros,
+            name: '/robot_' + rbt_id + '/orientation',
+            messageType: 'geometry_msgs/Vector3'
+        });
+        ang_accel_listener.subscribe(function (m) {
+            document.getElementById("motor_orientation").innerHTML = m.data;
+        });
+
+        var temp = new ROSLIB.Topic({
+            ros: ros,
+            name: '/robot_' + rbt_id + '/temperature',
+            messageType: 'geometry_msgs/Vector3'
+        });
+        ang_accel_listener.subscribe(function (m) {
+            document.getElementById("temperature").innerHTML = m.data;
+        });
+
+        var uptime = new ROSLIB.Topic({
+            ros: ros,
+            name: '/robot_' + rbt_id + '/uptime',
+            messageType: 'std_msgs/String'
+        });
+        ang_accel_listener.subscribe(function (m) {
+            document.getElementById("uptime").innerHTML = m.data;
+        });
+    </script>
+</head>
+
+<body>
+    <h1>DATA:</h1>
+    <p>Angular Acceleration: <span id="ang_accel"></span></p>
+    <p>Linear Acceleration: <span id="lin_accel"></span></p>
+    <p>Magnetometer: <span id="magnetometer"></span></p>
+    <p>Mosfet Temperature: <span id="mosfet_temp"></span></p>
+    <p>Motor Current: <span id="motor_current"></span></p>
+    <p>Motor Temperature: <span id="motor_temp"></span></p>
+    <p>Motor Voltage: <span id="motor_voltage"></span></p>
+    <p>Orientation: <span id="orientation"></span></p>
+    <p>Temperature: <span id="temperature"></span></p>
+    <p>Uptime: <span id="uptime"></span></p>
+    <p>Connection status: <span id="status"></span></p>
+</body>
+
+</html>

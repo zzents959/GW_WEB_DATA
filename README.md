@@ -1,2 +1,2 @@
 # GW_WEB_DATA
-HTML for the grain weevil data website
+Website which displays data for a single robot at a time.
