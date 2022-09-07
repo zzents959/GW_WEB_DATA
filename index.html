@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <script type="text/javascript" src="http://static.robotwebtools.org/roslibjs/current/roslib.min.js"></script>
 
     <script type="text/javascript" type="text/javascript">
         var rbt_id = window.prompt("Robot ID");
 
         var ros = new ROSLIB.Ros({
-            url: 'omaha.grainweevil.com://localhost:9090'
+            url: 'ws://omaha.grainweevil.com:9090'
         });
 
         ros.on('connection', function () {
@@ -29,7 +35,18 @@
             messageType: 'geometry_msgs/Vector3'
         });
         ang_accel_listener.subscribe(function (m) {
-            document.getElementById("ang_accel").innerHTML = m.data;
+            document.getElementById("ang_accel").innerHTML = "<table>"
+                + "<tr>"
+                + "<th>X</th>"
+                + "<th>Y</th>"
+                + "<th>Z</th>"
+                + "</tr>"
+                + "<tr>"
+                + "<td>" + m.x.toFixed(2) + "</td>"
+                + "<td>" + m.y.toFixed(2) + "</td>"
+                + "<td>" + m.z.toFixed(2) + "</td>"
+                + "</tr>"
+                + "</table>";
         });
 
         var lin_accel_listener = new ROSLIB.Topic({
@@ -37,8 +54,19 @@
             name: '/robot_' + rbt_id + '/lin_accel',
             messageType: 'geometry_msgs/Vector3'
         });
-        ang_accel_listener.subscribe(function (m) {
-            document.getElementById("lin_accel").innerHTML = m.data;
+        lin_accel_listener.subscribe(function (m) {
+            document.getElementById("lin_accel").innerHTML = "<table>"
+                + "<tr>"
+                + "<th>X</th>"
+                + "<th>Y</th>"
+                + "<th>Z</th>"
+                + "</tr>"
+                + "<tr>"
+                + "<td>" + m.x.toFixed(2) + "</td>"
+                + "<td>" + m.y.toFixed(2) + "</td>"
+                + "<td>" + m.z.toFixed(2) + "</td>"
+                + "</tr>"
+                + "</table>";
         });
 
         var magnetometer = new ROSLIB.Topic({
@@ -46,8 +74,19 @@
             name: '/robot_' + rbt_id + '/magnetometer',
             messageType: 'geometry_msgs/Vector3'
         });
-        ang_accel_listener.subscribe(function (m) {
-            document.getElementById("magnetometer").innerHTML = m.data;
+        magnetometer.subscribe(function (m) {
+            document.getElementById("magnetometer").innerHTML = "<table>"
+                + "<tr>"
+                + "<th>X</th>"
+                + "<th>Y</th>"
+                + "<th>Z</th>"
+                + "</tr>"
+                + "<tr>"
+                + "<td>" + m.x.toFixed(2) + "</td>"
+                + "<td>" + m.y.toFixed(2) + "</td>"
+                + "<td>" + m.z.toFixed(2) + "</td>"
+                + "</tr>"
+                + "</table>";
         });
 
         var mosfet_temp = new ROSLIB.Topic({
@@ -55,8 +94,19 @@
             name: '/robot_' + rbt_id + '/mosfet_temp',
             messageType: 'geometry_msgs/Vector3'
         });
-        ang_accel_listener.subscribe(function (m) {
-            document.getElementById("mosfet_temp").innerHTML = m.data;
+        mosfet_temp.subscribe(function (m) {
+            document.getElementById("mosfet_temp").innerHTML = "<table>"
+                + "<tr>"
+                + "<th>X</th>"
+                + "<th>Y</th>"
+                + "<th>Z</th>"
+                + "</tr>"
+                + "<tr>"
+                + "<td>" + m.x.toFixed(2) + "</td>"
+                + "<td>" + m.y.toFixed(2) + "</td>"
+                + "<td>" + m.z.toFixed(2) + "</td>"
+                + "</tr>"
+                + "</table>";
         });
 
         var motor_current = new ROSLIB.Topic({
@@ -64,8 +114,19 @@
             name: '/robot_' + rbt_id + '/motor_current',
             messageType: 'geometry_msgs/Vector3'
         });
-        ang_accel_listener.subscribe(function (m) {
-            document.getElementById("motor_current").innerHTML = m.data;
+        motor_current.subscribe(function (m) {
+            document.getElementById("motor_current").innerHTML = "<table>"
+                + "<tr>"
+                + "<th>X</th>"
+                + "<th>Y</th>"
+                + "<th>Z</th>"
+                + "</tr>"
+                + "<tr>"
+                + "<td>" + m.x.toFixed(2) + "</td>"
+                + "<td>" + m.y.toFixed(2) + "</td>"
+                + "<td>" + m.z.toFixed(2) + "</td>"
+                + "</tr>"
+                + "</table>";
         });
 
         var motor_temp = new ROSLIB.Topic({
@@ -73,8 +134,19 @@
             name: '/robot_' + rbt_id + '/motor_temp',
             messageType: 'geometry_msgs/Vector3'
         });
-        ang_accel_listener.subscribe(function (m) {
-            document.getElementById("motor_temp").innerHTML = m.data;
+        motor_temp.subscribe(function (m) {
+            document.getElementById("motor_temp").innerHTML = "<table>"
+                + "<tr>"
+                + "<th>X</th>"
+                + "<th>Y</th>"
+                + "<th>Z</th>"
+                + "</tr>"
+                + "<tr>"
+                + "<td>" + m.x.toFixed(2) + "</td>"
+                + "<td>" + m.y.toFixed(2) + "</td>"
+                + "<td>" + m.z.toFixed(2) + "</td>"
+                + "</tr>"
+                + "</table>";
         });
 
         var motor_voltage = new ROSLIB.Topic({
@@ -82,8 +154,19 @@
             name: '/robot_' + rbt_id + '/motor_voltage',
             messageType: 'geometry_msgs/Vector3'
         });
-        ang_accel_listener.subscribe(function (m) {
-            document.getElementById("motor_voltage").innerHTML = m.data;
+        motor_voltage.subscribe(function (m) {
+            document.getElementById("motor_voltage").innerHTML = "<table>"
+                + "<tr>"
+                + "<th>X</th>"
+                + "<th>Y</th>"
+                + "<th>Z</th>"
+                + "</tr>"
+                + "<tr>"
+                + "<td>" + m.x.toFixed(2) + "</td>"
+                + "<td>" + m.y.toFixed(2) + "</td>"
+                + "<td>" + m.z.toFixed(2) + "</td>"
+                + "</tr>"
+                + "</table>";
         });
 
         var orientation = new ROSLIB.Topic({
@@ -91,8 +174,19 @@
             name: '/robot_' + rbt_id + '/orientation',
             messageType: 'geometry_msgs/Vector3'
         });
-        ang_accel_listener.subscribe(function (m) {
-            document.getElementById("motor_orientation").innerHTML = m.data;
+        orientation.subscribe(function (m) {
+            document.getElementById("orientation").innerHTML = "<table>"
+                + "<tr>"
+                + "<th>X</th>"
+                + "<th>Y</th>"
+                + "<th>Z</th>"
+                + "</tr>"
+                + "<tr>"
+                + "<td>" + m.x.toFixed(2) + "</td>"
+                + "<td>" + m.y.toFixed(2) + "</td>"
+                + "<td>" + m.z.toFixed(2) + "</td>"
+                + "</tr>"
+                + "</table>";
         });
 
         var temp = new ROSLIB.Topic({
@@ -100,8 +194,19 @@
             name: '/robot_' + rbt_id + '/temperature',
             messageType: 'geometry_msgs/Vector3'
         });
-        ang_accel_listener.subscribe(function (m) {
-            document.getElementById("temperature").innerHTML = m.data;
+        temp.subscribe(function (m) {
+            document.getElementById("temperature").innerHTML = "<table>"
+                + "<tr>"
+                + "<th>X</th>"
+                + "<th>Y</th>"
+                + "<th>Z</th>"
+                + "</tr>"
+                + "<tr>"
+                + "<td>" + m.x.toFixed(2) + "</td>"
+                + "<td>" + m.y.toFixed(2) + "</td>"
+                + "<td>" + m.z.toFixed(2) + "</td>"
+                + "</tr>"
+                + "</table>";
         });
 
         var uptime = new ROSLIB.Topic({
@@ -109,25 +214,63 @@
             name: '/robot_' + rbt_id + '/uptime',
             messageType: 'std_msgs/String'
         });
-        ang_accel_listener.subscribe(function (m) {
+        uptime.subscribe(function (m) {
             document.getElementById("uptime").innerHTML = m.data;
         });
     </script>
 </head>
 
+<style type="text/css">
+    @font-face {
+        font-family: "sf-pro";
+        src: "/fonts/SF-Pro/SF-Pro.ttf";
+    }
+
+    p.robotofont {
+        font-family: "sf-pro", Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    h1.sf {
+        font-family: "sf-pro", Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        padding: 5px;
+    }
+</style>
+
 <body>
-    <h1>DATA:</h1>
-    <p>Angular Acceleration: <span id="ang_accel"></span></p>
-    <p>Linear Acceleration: <span id="lin_accel"></span></p>
-    <p>Magnetometer: <span id="magnetometer"></span></p>
-    <p>Mosfet Temperature: <span id="mosfet_temp"></span></p>
-    <p>Motor Current: <span id="motor_current"></span></p>
-    <p>Motor Temperature: <span id="motor_temp"></span></p>
-    <p>Motor Voltage: <span id="motor_voltage"></span></p>
-    <p>Orientation: <span id="orientation"></span></p>
-    <p>Temperature: <span id="temperature"></span></p>
-    <p>Uptime: <span id="uptime"></span></p>
-    <p>Connection status: <span id="status"></span></p>
+    <h1 class="sf">Data:</h1>
+    <div class="row">
+        <p class="robotofont col-md-4">Angular Acceleration: <span id="ang_accel"></span></p>
+        <p class="robotofont col-md-4">Linear Acceleration: <span id="lin_accel"></span></p>
+        <p class="robotofont col-md-4">Magnetometer: <span id="magnetometer"></span></p>
+    </div>
+    <div class="row">
+        <p class="robotofont col-md-4">Mosfet Temperature: <span id="mosfet_temp"></span></p>
+        <p class="robotofont col-md-4">Motor Current: <span id="motor_current"></span></p>
+        <p class="robotofont col-md-4">Motor Temperature: <span id="motor_temp"></span></p>
+    </div>
+    <div class="row">
+        <p class="robotofont col-md-4">Motor Voltage: <span id="motor_voltage"></span></p>
+        <p class="robotofont col-md-4">Orientation: <span id="orientation"></span></p>
+        <p class="robotofont col-md-4">Temperature: <span id="temperature"></span></p>
+    </div>
+    <p class="robotofont">Uptime: <span id="uptime"></span></p>
+    <p class="robotofont">Connection status: <span id="status"></span></p>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
