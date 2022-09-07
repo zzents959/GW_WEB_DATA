@@ -97,14 +97,12 @@
         mosfet_temp.subscribe(function (m) {
             document.getElementById("mosfet_temp").innerHTML = "<table>"
                 + "<tr>"
-                + "<th>X</th>"
-                + "<th>Y</th>"
-                + "<th>Z</th>"
+                + "<th>LEFT</th>"
+                + "<th>RIGHT</th>"
                 + "</tr>"
                 + "<tr>"
                 + "<td>" + m.x.toFixed(2) + "</td>"
                 + "<td>" + m.y.toFixed(2) + "</td>"
-                + "<td>" + m.z.toFixed(2) + "</td>"
                 + "</tr>"
                 + "</table>";
         });
@@ -117,14 +115,12 @@
         motor_current.subscribe(function (m) {
             document.getElementById("motor_current").innerHTML = "<table>"
                 + "<tr>"
-                + "<th>X</th>"
-                + "<th>Y</th>"
-                + "<th>Z</th>"
+                + "<th>LEFT</th>"
+                + "<th>RIGHT</th>"
                 + "</tr>"
                 + "<tr>"
                 + "<td>" + m.x.toFixed(2) + "</td>"
                 + "<td>" + m.y.toFixed(2) + "</td>"
-                + "<td>" + m.z.toFixed(2) + "</td>"
                 + "</tr>"
                 + "</table>";
         });
@@ -137,14 +133,12 @@
         motor_temp.subscribe(function (m) {
             document.getElementById("motor_temp").innerHTML = "<table>"
                 + "<tr>"
-                + "<th>X</th>"
-                + "<th>Y</th>"
-                + "<th>Z</th>"
+                + "<th>LEFT</th>"
+                + "<th>RIGHT</th>"
                 + "</tr>"
                 + "<tr>"
                 + "<td>" + m.x.toFixed(2) + "</td>"
                 + "<td>" + m.y.toFixed(2) + "</td>"
-                + "<td>" + m.z.toFixed(2) + "</td>"
                 + "</tr>"
                 + "</table>";
         });
@@ -157,14 +151,12 @@
         motor_voltage.subscribe(function (m) {
             document.getElementById("motor_voltage").innerHTML = "<table>"
                 + "<tr>"
-                + "<th>X</th>"
-                + "<th>Y</th>"
-                + "<th>Z</th>"
+                + "<th>LEFT</th>"
+                + "<th>RIGHT</th>"
                 + "</tr>"
                 + "<tr>"
                 + "<td>" + m.x.toFixed(2) + "</td>"
                 + "<td>" + m.y.toFixed(2) + "</td>"
-                + "<td>" + m.z.toFixed(2) + "</td>"
                 + "</tr>"
                 + "</table>";
         });
@@ -197,14 +189,12 @@
         temp.subscribe(function (m) {
             document.getElementById("temperature").innerHTML = "<table>"
                 + "<tr>"
-                + "<th>X</th>"
-                + "<th>Y</th>"
-                + "<th>Z</th>"
+                + "<th>INTERNAL</th>"
+                + "<th>EXTERNAL</th>"
                 + "</tr>"
                 + "<tr>"
                 + "<td>" + m.x.toFixed(2) + "</td>"
                 + "<td>" + m.y.toFixed(2) + "</td>"
-                + "<td>" + m.z.toFixed(2) + "</td>"
                 + "</tr>"
                 + "</table>";
         });
